@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqjx25jfhxfkm"]
+[gd_scene load_steps=12 format=3 uid="uid://dqjx25jfhxfkm"]
 
+[ext_resource type="Script" path="res://scenes/quiz.gd" id="1_75cfp"]
 [ext_resource type="Texture2D" uid="uid://d3uaj5gurqdam" path="res://Reference/QuizPage.png" id="1_k4srx"]
+[ext_resource type="Texture2D" uid="uid://cs25cgjr4vmlc" path="res://images/EG Master.png" id="2_8tvtc"]
+[ext_resource type="Texture2D" uid="uid://dqcn2qevmqyqe" path="res://images/texture_buttons/menu_normal.png" id="3_2th4r"]
+[ext_resource type="StyleBox" uid="uid://btx4v05f5un5b" path="res://scenes/BasicButton.tres" id="3_b0hsa"]
+[ext_resource type="Texture2D" uid="uid://dx27bbfu7ixor" path="res://images/texture_buttons/menu_pressed.png" id="4_e2bkc"]
+[ext_resource type="StyleBox" uid="uid://dxxfo5r0qm1m6" path="res://scenes/ButtonHover.tres" id="4_v2t3k"]
+[ext_resource type="Texture2D" uid="uid://dqwmdpn8s1wgo" path="res://images/texture_buttons/menu_hover.png" id="5_31hrf"]
+[ext_resource type="StyleBox" uid="uid://bsf1v1b470yik" path="res://scenes/ButtonPressed.tres" id="5_p8jnt"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_0a4p3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy3aa"]
 
 [node name="QuizSection" type="Control"]
 layout_mode = 3
@@ -11,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_75cfp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -28,8 +39,114 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_8tvtc")
+expand_mode = 3
+
+[node name="Panel" type="Panel" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iy3aa")
+
+[node name="BackToMenuBTN" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_2th4r")
+texture_pressed = ExtResource("4_e2bkc")
+texture_hover = ExtResource("5_31hrf")
+
+[node name="CategoryLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="NumberLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+
+[node name="QuestionLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "Which of the following carbonated soft drinks were introduced first?"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="OptionContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/OptionContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("3_b0hsa")
+theme_override_styles/hover = ExtResource("4_v2t3k")
+theme_override_styles/pressed = ExtResource("5_p8jnt")
+text = "Coca-Cola"
+
+[node name="Button2" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/OptionContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("3_b0hsa")
+theme_override_styles/hover = ExtResource("4_v2t3k")
+theme_override_styles/pressed = ExtResource("5_p8jnt")
+text = "Sprite"
+
+[node name="Button3" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/OptionContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("3_b0hsa")
+theme_override_styles/hover = ExtResource("4_v2t3k")
+theme_override_styles/pressed = ExtResource("5_p8jnt")
+text = "Dr. Pepper"
+
+[node name="Button4" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/OptionContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("3_b0hsa")
+theme_override_styles/hover = ExtResource("4_v2t3k")
+theme_override_styles/pressed = ExtResource("5_p8jnt")
+text = "Mountain Dew"
 
 [node name="QuizPage" type="Sprite2D" parent="."]
-position = Vector2(1552, 307)
-scale = Vector2(0.200501, 0.200501)
+position = Vector2(2048, 216)
+scale = Vector2(0.522463, 0.602536)
 texture = ExtResource("1_k4srx")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/BackToMenuBTN" to="." method="_on_back_to_menu_btn_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
